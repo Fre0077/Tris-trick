@@ -1,3 +1,5 @@
+//cioa come va
+
 //variabili da tenersi strette strette al culetto
 let turno = false;//per gestire i turni
 let turnoSuccessivo = '';//direi che è scontato
