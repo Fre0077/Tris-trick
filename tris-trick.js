@@ -9,6 +9,7 @@ const caselleBlue = [];
 const caselleGrandiUsate = [];//array che contine tutte le caselle grandi che sono già state premute in precedenza
 const caselleGrandiRosse = [];
 const caselleGrandiBlue = [];
+const sfondiCambiati = [];//array per memorizzare quali caselle sono state cambiate di sfondo
 
 
 //funzione per piazzare i segni e gestire il gioco
@@ -32,7 +33,7 @@ function place() {
             } else {
                 //questo avviene solo per il primo turno
                 if ((caselleUsate.length)<1) {
-                    primaMossa(caselleBlue,'rosso')
+                    primaMossa(caselleRosse,'rosso')
                 }
                 return 0;
             }
@@ -170,20 +171,34 @@ function mossa(casellePiccole, caselleGrandi, colore) {
     //caselle già usate
     caselleUsate.push(casellaNum);
     casellePiccole.push(casellaNum);
-    //cambio colore sfondo del turno
-    if (in_array(riconosciGrande(casellaNum).replace("grande",''),caselleGrandiUsate)==false) {
-        document.getElementById(turnoSuccessivo).style.backgroundColor = 'rgb(97, 96, 96)';
-        document.getElementById(portaGrande(casellaNum)).style.backgroundColor = 'rgb(150, 150, 150)';
-    } 
-    //else if (in_array(riconosciGrande(casellaNum)).replace("grande",'')==true) {
-
-    //} 
     //caselle grandi già usate 
     if (controllaVittoriaPiccolo(casellaNum, casellePiccole)!==0) {
         caselleGrandi.push(controllaVittoriaPiccolo(casellaNum, casellePiccole));
         caselleGrandiUsate.push(controllaVittoriaPiccolo(casellaNum, casellePiccole));
         //fare il segno  grande 
     }
+    //cambio colore sfondo del turno
+    console.log(caselleGrandiUsate)
+    if (in_array(portaGrande(casellaNum).replace("grande",''),caselleGrandiUsate)==false) {
+        for (i=0 ; i<sfondiCambiati.length ; i++) {
+            document.getElementById(sfondiCambiati[i]).style.backgroundColor = 'rgb(97, 96, 96)';
+        }
+        sfondiCambiati.pop()
+        document.getElementById(portaGrande(casellaNum)).style.backgroundColor = 'rgb(150, 150, 150)';
+        sfondiCambiati.push(portaGrande(casellaNum))
+    } 
+    else if (in_array(portaGrande(casellaNum).replace("grande",''),caselleGrandiUsate)==true) {
+        for (i=0 ; i<sfondiCambiati.length ; i++) {
+            document.getElementById(sfondiCambiati[i]).style.backgroundColor = 'rgb(97, 96, 96)';
+        }
+        sfondiCambiati.pop()
+        for (n=1 ; n<10 ; n++) {
+            if (in_array(n,caselleGrandiUsate) == false) {
+                document.getElementById('grande'+n).style.backgroundColor = 'rgb(150, 150, 150)';
+                sfondiCambiati.push('grande'+n)
+            }
+        }
+    } 
     //controllo per la vittoria o il pareggio
     if (controllaVittoriaGrande(caselleGrandi)==true) {
         if (colore == 'rosso') {
@@ -203,6 +218,7 @@ function mossa(casellePiccole, caselleGrandi, colore) {
     } else if (colore == 'blue') {
         turno = true;
     }
+    console.log(sfondiCambiati)
 }
 
 
@@ -212,6 +228,7 @@ function primaMossa(casellePiccole, colore) {
     document.getElementById(casella).style.backgroundColor = 'rgb(26, 58, 80)';
     document.getElementById(casella).style.borderRadius = '100%';
     turnoSuccessivo = portaGrande(casellaNum);
+    sfondiCambiati.push(portaGrande(casellaNum))
     caselleUsate.push(casellaNum);
     casellePiccole.push(casellaNum);
     if (colore == 'rosso') {
@@ -219,6 +236,7 @@ function primaMossa(casellePiccole, colore) {
     } else if (colore == 'blue') {
         turno = true;
     }
+    console.log(sfondiCambiati)
 }
 
 
