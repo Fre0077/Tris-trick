@@ -3,9 +3,6 @@ let turno = false;//per gestire i turni
 let turnoSuccessivo = '';//direi che è scontato
 let casella = "";//contiene id casella
 let casellaNum = 0;//contine il numero dell'id della casella
-let casellaGrande = '';//contiene la casella grade
-let vecchiaCasellaGrande = '';//variabile temporanea per far ritornare normale il colore della casella grande usata
-let contaTurni = 0;
 const caselleUsate = [];//array che contine tutte le caselle che sono già state premute in precedenza 
 const caselleRosse = [];
 const caselleBlue = [];
@@ -24,19 +21,17 @@ function place() {
     
     //if per l'inversione dei turni
     if (turno == true) {
-
-
-        //segno rosso + controllo caselle già usate
+        //rosso
         if (in_array(casellaNum, caselleUsate) == false) {
-            if (contaTurni>0 && turnoSuccessivo==riconosciGrande(casellaNum) && in_array(turnoSuccessivo.replace('grande',''),caselleGrandiUsate)==false) { 
+            if ((caselleUsate.length)>0 && turnoSuccessivo==riconosciGrande(casellaNum) && in_array(turnoSuccessivo.replace('grande',''),caselleGrandiUsate)==false) { 
                 //turno normale
                 mossa(caselleRosse,caselleGrandiRosse,'rosso')
-            } else if (in_array(turnoSuccessivo.replace('grande',''),caselleGrandiUsate)==true && riconosciGrande(casellaNum)!==turnoSuccessivo) { 
+            } else if ((caselleUsate.length)>0 && in_array(turnoSuccessivo.replace('grande',''),caselleGrandiUsate)==true && riconosciGrande(casellaNum)!==turnoSuccessivo) { 
                 //caso in cui hai la mossa libera
                 mossa(caselleRosse,caselleGrandiRosse,'rosso')
             } else {
                 //questo avviene solo per il primo turno
-                if (contaTurni<1) {
+                if ((caselleUsate.length)<1) {
                     primaMossa(caselleBlue,'rosso')
                 }
                 return 0;
@@ -47,19 +42,17 @@ function place() {
 
 
     } else if (turno == false) {
-
-
-        //segno blu + controllo caselle già usate
+        //blue
         if (in_array(casellaNum, caselleUsate) == false) {
-            if (contaTurni>0 && turnoSuccessivo==riconosciGrande(casellaNum) && in_array(turnoSuccessivo.replace('grande',''),caselleGrandiUsate)==false) { 
+            if ((caselleUsate.length)>0 && turnoSuccessivo==riconosciGrande(casellaNum) && in_array(turnoSuccessivo.replace('grande',''),caselleGrandiUsate)==false) { 
                 //turno normale
                 mossa(caselleBlue,caselleGrandiBlue,'blue')
-            } else if (in_array(turnoSuccessivo.replace('grande',''),caselleGrandiUsate)==true && riconosciGrande(casellaNum)!==turnoSuccessivo) { 
+            } else if ((caselleUsate.length)>0 && turnoSuccessivo!==riconosciGrande(casellaNum) && in_array(turnoSuccessivo.replace('grande',''),caselleGrandiUsate)==true && in_array((riconosciGrande(casellaNum)).replace('grande',''),caselleGrandiUsate)==false) { 
                 //caso in cui hai la mossa libera
                 mossa(caselleBlue,caselleGrandiBlue,'blue')
             } else {
                 //questo avviene solo per il primo turno
-                if (contaTurni<1) {
+                if ((caselleUsate.length)<1) {
                     primaMossa(caselleBlue,'blue')
                 }
                 return 0;
@@ -180,7 +173,6 @@ function mossa(casellePiccole, caselleGrandi, colore) {
     } else if (colore == 'blue') {
         turno = true;
     }
-    contaTurni++;
     //caselle già usate
     caselleUsate.push(casellaNum);
     casellePiccole.push(casellaNum);
@@ -200,14 +192,14 @@ function mossa(casellePiccole, caselleGrandi, colore) {
     //controllo per la vittoria o il pareggio
     if (controllaVittoriaGrande(caselleGrandi)==true) {
         if (colore == 'rosso') {
-            alert('complimenti giocatore rosso hai vinto la partita!!! E ricorda sempre che sei vai in bagno dopo il messicano ed il water è rosso non è mai un buon segno')
+            alert('complimenti giocatore rosso hai vinto la partita!!!\nE ricorda sempre che sei vai in bagno dopo il messicano ed il water è rosso non è mai un buon segno...')
             location.reload()
         } else if (colore == 'blue') {
-            alert("complimenti giocatore blue hai vinto la partita!!! E ricorda sempre che se ti svegli e sei blue, si sarai come un puffo, però meglio che corri all'ospedale")
+            alert("complimenti giocatore blue hai vinto la partita!!!\nE ricorda sempre che se ti svegli e sei blue, si sarai come un puffo, però meglio che corri all'ospedale...")
             location.reload()
         }
     } else if (caselleGrandiUsate.length==9) {
-        alert('La partita si è conclosa con un pareggio')
+        alert("La partita si è conclosa con un pareggio!!!\nE ricordate cari sfidanti che c'è chi prende fischi e c'è chi prende fiaschi, ma c'è anche lo sfigato che non prende niente...")
         location.reload()
     }
 }
@@ -226,7 +218,6 @@ function primaMossa(casellePiccole, colore) {
     } else if (colore == 'blue') {
         turno = true;
     }
-    contaTurni++;
 }
 
 
