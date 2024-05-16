@@ -26,7 +26,7 @@ function place() {
             if ((caselleUsate.length)>0 && turnoSuccessivo==riconosciGrande(casellaNum) && in_array(turnoSuccessivo.replace('grande',''),caselleGrandiUsate)==false) { 
                 //turno normale
                 mossa(caselleRosse,caselleGrandiRosse,'rosso')
-            } else if ((caselleUsate.length)>0 && in_array(turnoSuccessivo.replace('grande',''),caselleGrandiUsate)==true && riconosciGrande(casellaNum)!==turnoSuccessivo) { 
+            } else if ((caselleUsate.length)>0 && turnoSuccessivo!==riconosciGrande(casellaNum) && in_array(turnoSuccessivo.replace('grande',''),caselleGrandiUsate)==true && in_array((riconosciGrande(casellaNum)).replace('grande',''),caselleGrandiUsate)==false) { 
                 //caso in cui hai la mossa libera
                 mossa(caselleRosse,caselleGrandiRosse,'rosso')
             } else {
@@ -95,6 +95,19 @@ function riconosciGrande(valoreIngresso) {
 }
 
 
+//inizio gioco
+function inizio() {
+    let temp = prompt('chi comincia rosso/blue');
+    if (temp == 'rosso') {
+        return true;
+    } else if (temp == 'blue') {
+        return false;
+    } else {
+        inizio();
+    }
+}
+
+
 //funzione per controllare se un giocatore ha vinto in uno dei 9 quadranti
 function controllaVittoriaPiccolo(valoreIngresso, arrayIngresso) {
     let grandeNum = parseInt((riconosciGrande(valoreIngresso)).replace("grande",""));
@@ -144,19 +157,6 @@ function controllaVittoriaGrande(arrayIngresso) {
 }
 
 
-//inizio gioco
-function inizio() {
-    let temp = prompt('chi comincia rosso/blue');
-    if (temp == 'rosso') {
-        return true;
-    } else if (temp == 'blue') {
-        return false;
-    } else {
-        inizio();
-    }
-}
-
-
 //funzione per far avvenire e segnare ogni mossa dei giocatori
 function mossa(casellePiccole, caselleGrandi, colore) {
     //fare il segno 
@@ -167,28 +167,23 @@ function mossa(casellePiccole, caselleGrandi, colore) {
         document.getElementById(casella).style.backgroundColor = 'rgb(26, 58, 80)';
         document.getElementById(casella).style.borderRadius = '100%';
     }
-    //cambio turno
-    if (colore == 'rosso') {
-        turno = false;
-    } else if (colore == 'blue') {
-        turno = true;
-    }
     //caselle già usate
     caselleUsate.push(casellaNum);
     casellePiccole.push(casellaNum);
+    //cambio colore sfondo del turno
+    if (in_array(riconosciGrande(casellaNum).replace("grande",''),caselleGrandiUsate)==false) {
+        document.getElementById(turnoSuccessivo).style.backgroundColor = 'rgb(97, 96, 96)';
+        document.getElementById(portaGrande(casellaNum)).style.backgroundColor = 'rgb(150, 150, 150)';
+    } 
+    //else if (in_array(riconosciGrande(casellaNum)).replace("grande",'')==true) {
+
+    //} 
     //caselle grandi già usate 
     if (controllaVittoriaPiccolo(casellaNum, casellePiccole)!==0) {
         caselleGrandi.push(controllaVittoriaPiccolo(casellaNum, casellePiccole));
         caselleGrandiUsate.push(controllaVittoriaPiccolo(casellaNum, casellePiccole));
+        //fare il segno  grande 
     }
-    //fare il segno  grande 
-
-
-
-    
-    //cambio colore sfondo del turno
-    document.getElementById(turnoSuccessivo).style.backgroundColor = 'rgb(97, 96, 96)';
-    document.getElementById(portaGrande(casellaNum)).style.backgroundColor = 'rgb(150, 150, 150)';
     //controllo per la vittoria o il pareggio
     if (controllaVittoriaGrande(caselleGrandi)==true) {
         if (colore == 'rosso') {
@@ -201,6 +196,12 @@ function mossa(casellePiccole, caselleGrandi, colore) {
     } else if (caselleGrandiUsate.length==9) {
         alert("La partita si è conclosa con un pareggio!!!\nE ricordate cari sfidanti che c'è chi prende fischi e c'è chi prende fiaschi, ma c'è anche lo sfigato che non prende niente...")
         location.reload()
+    }
+    //cambio turno
+    if (colore == 'rosso') {
+        turno = false;
+    } else if (colore == 'blue') {
+        turno = true;
     }
 }
 
@@ -221,7 +222,6 @@ function primaMossa(casellePiccole, colore) {
 }
 
 
-
 /*
 COMANDI UTILI:
 -event.target.id
@@ -230,16 +230,12 @@ COMANDI UTILI:
 -Nome_array.length
 -prompt()
 -math.floor(a/b)
--reload()
+-location.reload()
+-nomeArray.splice(numeroElementiDaEliminare)
 
 
----Colore segno blue:  rgb(26, 58, 80);
----Colore segno rosso:  rgb(119, 52, 52);
----Colore dello sfondo per indicare il turno: rgb(150, 150, 150); 
+---Colore segno blue:  rgb(26, 58, 80)
+---Colore segno rosso:  rgb(119, 52, 52)
+---Colore sfondo normale:  rgb(97, 96, 96)
+---Colore dello sfondo per indicare il turno:  rgb(150, 150, 150)
 */ 
-
-
-
-
-                //console.log(controllaVittoriaPiccolo(casellaNum, caselleRosse));
-                //console.log(controllaVittoriaPiccolo(casellaNum, caselleBlue));
