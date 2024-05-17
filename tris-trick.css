@@ -16,15 +16,16 @@ body {
 #container {
     display: flex;
     flex-wrap: wrap;
-    width: 920px;
+    justify-content: center;
+    width: 100%;
     height: 920px;
+    max-width: 920px;
 }
 .grande {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 304px;
-    height: 304px;
+    width: 32%;
 }
 #grande1 {
     border-right: 2px solid black;
@@ -73,8 +74,8 @@ body {
     justify-content: center;
     align-items: center;
     margin-top: 6px;
-    width: 96px;
-    height: 96px;
+    width: 31.5%;
+    height: 31.5%;
     border-right: 1px solid black;
     border-bottom: 1px solid black;
 }
@@ -83,8 +84,8 @@ body {
     justify-content: center;
     align-items: center;
     margin-top: 6px;
-    width: 96px;
-    height: 96px;
+    width: 31.5%;
+    height: 31.5%;
     border-right: 1px solid black;
     border-left: 1px solid black;
     border-bottom: 1px solid black;
@@ -94,8 +95,8 @@ body {
     justify-content: center;
     align-items: center;
     margin-top: 6px;
-    width: 96px;
-    height: 96px;
+    width: 31.5%;
+    height: 31.5%;
     border-left: 1px solid black;
     border-bottom: 1px solid black;
 }
@@ -103,8 +104,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 96px;
-    height: 96px;
+    width: 31.5%;
+    height: 31.5%;
     border-right: 1px solid black;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
@@ -113,8 +114,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 96px;
-    height: 96px;
+    width: 31.5%;
+    height: 31.5%;
     border-right: 1px solid black;
     border-left: 1px solid black;
     border-top: 1px solid black;
@@ -124,8 +125,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 96px;
-    height: 96px;
+    width: 31.5%;
+    height: 31.5%;
     border-left: 1px solid black;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
@@ -135,8 +136,8 @@ body {
     justify-content: center;
     align-items: center;
     margin-bottom: 6px;
-    width: 96px;
-    height: 96px;
+    width: 31.5%;
+    height: 31.5%;
     border-right: 1px solid black;
     border-top: 1px solid black;
 }
@@ -145,8 +146,8 @@ body {
     justify-content: center;
     align-items: center;
     margin-bottom: 6px;
-    width: 96px;
-    height: 96px;
+    width: 31.5%;
+    height: 31.5%;
     border-right: 1px solid black;
     border-left: 1px solid black;
     border-top: 1px solid black;
@@ -156,14 +157,21 @@ body {
     justify-content: center;
     align-items: center;
     margin-bottom: 6px;
-    width: 96px;
-    height: 96px;
+    width: 31.5%;
+    height: 31.5%;
     border-left: 1px solid black;
     border-top: 1px solid black;
 }
 .item{
-    width: 85px;
-    height: 85px;
+    width: 85%;
+    height: 85%;
+}
+.itemGrande{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
 }
 
 .piccolo1:hover {background-color: rgba(219, 218, 218, 0.274);}

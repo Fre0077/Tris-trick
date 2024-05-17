@@ -175,10 +175,12 @@ function mossa(casellePiccole, caselleGrandi, colore) {
     if (controllaVittoriaPiccolo(casellaNum, casellePiccole)!==0) {
         caselleGrandi.push(controllaVittoriaPiccolo(casellaNum, casellePiccole));
         caselleGrandiUsate.push(controllaVittoriaPiccolo(casellaNum, casellePiccole));
-        //fare il segno  grande 
+        for (i=1 ; i<10 ; i++) {
+            document.getElementById()
+        }
+        document.getElementById('itemGrande'+(controllaVittoriaPiccolo(casellaNum, casellePiccole))).style.backgroundColor = 'rgb(26, 58, 80)'
     }
     //cambio colore sfondo del turno
-    console.log(caselleGrandiUsate)
     if (in_array(portaGrande(casellaNum).replace("grande",''),caselleGrandiUsate)==false) {
         for (i=0 ; i<sfondiCambiati.length ; i++) {
             document.getElementById(sfondiCambiati[i]).style.backgroundColor = 'rgb(97, 96, 96)';
@@ -218,7 +220,6 @@ function mossa(casellePiccole, caselleGrandi, colore) {
     } else if (colore == 'blue') {
         turno = true;
     }
-    console.log(sfondiCambiati)
 }
 
 
@@ -236,7 +237,6 @@ function primaMossa(casellePiccole, colore) {
     } else if (colore == 'blue') {
         turno = true;
     }
-    console.log(sfondiCambiati)
 }
 
 
