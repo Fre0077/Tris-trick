@@ -24,8 +24,6 @@ function place() {
     //if per l'inversione dei turni
     if (turno == true) {
         //rosso
-        document.getElementById('turno').style.backgroundColor = 'rgb(26, 58, 80)';
-        document.getElementById('turno').style.borderRadius = '100%';
         if (in_array(casellaNum, caselleUsate) == false) {
             if ((caselleUsate.length)>0 && turnoSuccessivo==riconosciGrande(casellaNum) && in_array(turnoSuccessivo.replace('grande',''),caselleGrandiUsate)==false) { 
                 //turno normale
@@ -47,8 +45,6 @@ function place() {
 
     } else if (turno == false) {
         //blue
-        document.getElementById('turno').style.backgroundColor = 'rgb(119, 52, 52)';
-        document.getElementById('turno').style.borderRadius = '15px';
         if (in_array(casellaNum, caselleUsate) == false) {
             if ((caselleUsate.length)>0 && turnoSuccessivo==riconosciGrande(casellaNum) && in_array(turnoSuccessivo.replace('grande',''),caselleGrandiUsate)==false) { 
                 //turno normale
@@ -173,9 +169,13 @@ function mossa(casellePiccole, caselleGrandi, colore) {
     if (colore == 'rosso') {
         document.getElementById(casella).style.backgroundColor = 'rgb(119, 52, 52)';
         document.getElementById(casella).style.borderRadius = '15px';
+        document.getElementById('turno').style.backgroundColor = 'rgb(26, 58, 80)';
+        document.getElementById('turno').style.borderRadius = '100%';
     } else if (colore == 'blue') {
         document.getElementById(casella).style.backgroundColor = 'rgb(26, 58, 80)';
         document.getElementById(casella).style.borderRadius = '100%';
+        document.getElementById('turno').style.backgroundColor = 'rgb(119, 52, 52)';
+        document.getElementById('turno').style.borderRadius = '15px';
     }
     //caselle già usate
     caselleUsate.push(casellaNum);
@@ -185,7 +185,6 @@ function mossa(casellePiccole, caselleGrandi, colore) {
         caselleGrandi.push(controllaVittoriaPiccolo(casellaNum, casellePiccole));
         caselleGrandiUsate.push(controllaVittoriaPiccolo(casellaNum, casellePiccole));
         for (n=1 ; n<10 ; n++) {
-            console.log('o'+(((controllaVittoriaPiccolo(casellaNum, casellePiccole)-1)*9)+n))
             document.getElementById('o'+(((controllaVittoriaPiccolo(casellaNum, casellePiccole)-1)*9)+n)).style.display='none'
         }
         document.getElementById('itemGrande'+(controllaVittoriaPiccolo(casellaNum, casellePiccole))).style.width = '90%'
@@ -252,8 +251,12 @@ function primaMossa(casellePiccole, colore) {
     casellePiccole.push(casellaNum);
     if (colore == 'rosso') {
         turno = false;
+        document.getElementById('turno').style.backgroundColor = 'rgb(26, 58, 80)';
+        document.getElementById('turno').style.borderRadius = '100%';
     } else if (colore == 'blue') {
         turno = true;
+        document.getElementById('turno').style.backgroundColor = 'rgb(119, 52, 52)';
+        document.getElementById('turno').style.borderRadius = '15px';
     }
 }
 
