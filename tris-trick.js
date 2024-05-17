@@ -12,6 +12,8 @@ const caselleGrandiBlue = [];
 const sfondiCambiati = [];//array per memorizzare quali caselle sono state cambiate di sfondo
 
 
+document.getElementById('turno').style.backgroundColor = 'rgb(26, 58, 80)';
+document.getElementById('turno').style.borderRadius = '100%';
 //funzione per piazzare i segni e gestire il gioco
 function place() {
 
@@ -19,10 +21,11 @@ function place() {
     casella = event.target.id;
     casellaNum = parseInt(casella.replace('i',""));
     
-    
     //if per l'inversione dei turni
     if (turno == true) {
         //rosso
+        document.getElementById('turno').style.backgroundColor = 'rgb(26, 58, 80)';
+        document.getElementById('turno').style.borderRadius = '100%';
         if (in_array(casellaNum, caselleUsate) == false) {
             if ((caselleUsate.length)>0 && turnoSuccessivo==riconosciGrande(casellaNum) && in_array(turnoSuccessivo.replace('grande',''),caselleGrandiUsate)==false) { 
                 //turno normale
@@ -44,6 +47,8 @@ function place() {
 
     } else if (turno == false) {
         //blue
+        document.getElementById('turno').style.backgroundColor = 'rgb(119, 52, 52)';
+        document.getElementById('turno').style.borderRadius = '15px';
         if (in_array(casellaNum, caselleUsate) == false) {
             if ((caselleUsate.length)>0 && turnoSuccessivo==riconosciGrande(casellaNum) && in_array(turnoSuccessivo.replace('grande',''),caselleGrandiUsate)==false) { 
                 //turno normale
@@ -100,8 +105,12 @@ function riconosciGrande(valoreIngresso) {
 function inizio() {
     let temp = prompt('chi comincia rosso/blue');
     if (temp == 'rosso') {
+        document.getElementById('turno').style.backgroundColor = 'rgb(119, 52, 52)';
+        document.getElementById('turno').style.borderRadius = '15px';
         return true;
     } else if (temp == 'blue') {
+        document.getElementById('turno').style.backgroundColor = 'rgb(26, 58, 80)';
+        document.getElementById('turno').style.borderRadius = '100%';
         return false;
     } else {
         inizio();
@@ -175,10 +184,19 @@ function mossa(casellePiccole, caselleGrandi, colore) {
     if (controllaVittoriaPiccolo(casellaNum, casellePiccole)!==0) {
         caselleGrandi.push(controllaVittoriaPiccolo(casellaNum, casellePiccole));
         caselleGrandiUsate.push(controllaVittoriaPiccolo(casellaNum, casellePiccole));
-        for (i=1 ; i<10 ; i++) {
-            document.getElementById()
+        for (n=1 ; n<10 ; n++) {
+            console.log('o'+(((controllaVittoriaPiccolo(casellaNum, casellePiccole)-1)*9)+n))
+            document.getElementById('o'+(((controllaVittoriaPiccolo(casellaNum, casellePiccole)-1)*9)+n)).style.display='none'
         }
-        document.getElementById('itemGrande'+(controllaVittoriaPiccolo(casellaNum, casellePiccole))).style.backgroundColor = 'rgb(26, 58, 80)'
+        document.getElementById('itemGrande'+(controllaVittoriaPiccolo(casellaNum, casellePiccole))).style.width = '90%'
+        document.getElementById('itemGrande'+(controllaVittoriaPiccolo(casellaNum, casellePiccole))).style.height = '90%'
+        if (colore == 'blue') {
+            document.getElementById('itemGrande'+(controllaVittoriaPiccolo(casellaNum, casellePiccole))).style.backgroundColor = 'rgb(26, 58, 80)'
+            document.getElementById('itemGrande'+(controllaVittoriaPiccolo(casellaNum, casellePiccole))).style.borderRadius = '100%'
+        } else if (colore == 'rosso') {
+            document.getElementById('itemGrande'+(controllaVittoriaPiccolo(casellaNum, casellePiccole))).style.backgroundColor = 'rgb(119, 52, 52)'
+            document.getElementById('itemGrande'+(controllaVittoriaPiccolo(casellaNum, casellePiccole))).style.borderRadius = '45px'
+        }
     }
     //cambio colore sfondo del turno
     if (in_array(portaGrande(casellaNum).replace("grande",''),caselleGrandiUsate)==false) {
