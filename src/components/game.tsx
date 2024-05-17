@@ -14,7 +14,7 @@ export function Game() {
   return (
     <div>
       <h1>Tris-Trick</h1>
-      `It's ${turn} turn`
+      {`It's ${turn} turn`}
       {victory ? `Winner is ${victory}` : undefined}
       <TurnContext.Provider
         value={{

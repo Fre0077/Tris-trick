@@ -38,11 +38,11 @@ export const Grid3x3: FC<Grid3x3Props> = ({
       {cells.map((_, i) => {
         if (i < rowsNumber)
           return (
-            <Grid flexDirection="row">
+            <Grid flexDirection="row" key={i}>
               {cells.map((cell, j) => {
                 if (j >= i * rowsNumber && j < (i + 1) * rowsNumber)
                   return (
-                    <GridItem>
+                    <GridItem key={j}>
                       {cell({ onStateChange: cellChange(j) })}
                     </GridItem>
                   );
