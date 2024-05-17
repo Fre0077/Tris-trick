@@ -1,7 +1,9 @@
+import { Game } from "./components/game";
+
 function App() {
   return (
     <>
-      <h1>Tris-Trick</h1>
+      <Game />
     </>
   );
 }

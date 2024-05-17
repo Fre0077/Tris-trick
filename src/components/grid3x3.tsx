@@ -16,11 +16,12 @@ export const Grid3x3: FC<Grid3x3Props> = ({
   if (cells.length != 9) {
     throw new Error("Invalid number of cells");
   }
-  const winState = new Array<Player | undefined>(cells.length);
-  const rowsNumber = 3;
+  const [winState,setWinState] = useState(new Array<Player | undefined>(cells.length))
+  const columsNumber = 3;
   const cellChange = (index: number) => {
     return (val: Player) => {
       winState[index] = val;
+      setWinState(winState)
       const winner = computeWinner(winState);
       if (winner) {
         setVictory(winner);
@@ -34,22 +35,20 @@ export const Grid3x3: FC<Grid3x3Props> = ({
   }
 
   return (
-    <Grid flexDirection="column">
-      {cells.map((_, i) => {
-        if (i < rowsNumber)
-          return (
-            <Grid flexDirection="row" key={i}>
-              {cells.map((cell, j) => {
-                if (j >= i * rowsNumber && j < (i + 1) * rowsNumber)
-                  return (
-                    <GridItem key={j}>
-                      {cell({ onStateChange: cellChange(j) })}
-                    </GridItem>
-                  );
-              })}
-            </Grid>
-          );
-      })}
+    <Grid
+      alignSelf="stretch"
+      columnGap="0.75rem"
+      gridTemplateColumns="[a] min-content [b] min-content [c] min-content"
+    >
+      {cells.map((cell, i) => (
+        <GridItem
+          gridRow={Math.floor(i / columsNumber) + 1}
+          gridColumn={(i % columsNumber) + 1}
+          key={i}
+        >
+          {cell({ onStateChange: cellChange(i) })}
+        </GridItem>
+      ))}
     </Grid>
   );
 };

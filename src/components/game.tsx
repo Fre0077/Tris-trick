@@ -24,6 +24,7 @@ export function Game() {
           },
         }}
       >
+        {/* <LittleGrid onStateChange={(val) => setVictory(val)} /> */}
         <BigGrid onStateChange={(val) => setVictory(val)} />
       </TurnContext.Provider>
     </div>

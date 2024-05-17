@@ -8,9 +8,11 @@ export interface LittleGridProps extends CellProps {}
 export const LittleGrid: FC<LittleGridProps> = ({
   onStateChange,
 }: LittleGridProps) => {
-  const buttons = new Array<Cell>(9).fill(({ onStateChange }) => {
-    return <SimpleButton onStateChange={onStateChange} />;
-  });
+  const buttons = new Array<Cell>(9).fill(
+    ({ onStateChange: onStateChangeInner }) => {
+      return <SimpleButton onStateChange={onStateChangeInner} />;
+    },
+  );
   return (
     <Grid3x3
       cells={buttons}
