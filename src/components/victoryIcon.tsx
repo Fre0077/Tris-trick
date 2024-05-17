@@ -2,14 +2,14 @@ import { Image, ImageProps } from "@chakra-ui/react";
 import { Player } from "../domain/players";
 
 export interface VictoryIconProps extends ImageProps {
-  color?: Player;
+  winner?: Player;
 }
 
 export function VictoryIcon(props: VictoryIconProps) {
-  const {color} = props
-  return color === "blue" ? (
-    <Image src="blueCircle.png" {...props}/>
-  ) : color === "red" ?(
-    <Image src="redCross.png" {...props}/>
-  ): null;
+  const { winner } = props;
+  return winner === "blue" ? (
+    <Image src="blueCircle.png" align="stretch" {...props} />
+  ) : winner === "red" ? (
+    <Image src="redCross.png" align="stretch" {...props} />
+  ) : null;
 }

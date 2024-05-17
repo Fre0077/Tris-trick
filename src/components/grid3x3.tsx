@@ -11,17 +11,20 @@ export interface Grid3x3Props extends GridProps, CellProps {
 export const Grid3x3: FC<Grid3x3Props> = ({
   cells,
   onStateChange,
+  ...rest
 }: Grid3x3Props) => {
   const [victory, setVictory] = useState<Player | undefined>(undefined);
   if (cells.length != 9) {
     throw new Error("Invalid number of cells");
   }
-  const [winState,setWinState] = useState(new Array<Player | undefined>(cells.length))
   const columsNumber = 3;
+  const [winState, setWinState] = useState(
+    new Array<Player | undefined>(cells.length),
+  );
   const cellChange = (index: number) => {
     return (val: Player) => {
       winState[index] = val;
-      setWinState(winState)
+      setWinState(winState);
       const winner = computeWinner(winState);
       if (winner) {
         setVictory(winner);
@@ -31,14 +34,14 @@ export const Grid3x3: FC<Grid3x3Props> = ({
   };
 
   if (victory) {
-    return <VictoryIcon color={victory}></VictoryIcon>;
+    return <VictoryIcon {...rest} winner={victory}></VictoryIcon>;
   }
 
   return (
     <Grid
-      alignSelf="stretch"
-      columnGap="0.75rem"
+      alignSelf="center"
       gridTemplateColumns="[a] min-content [b] min-content [c] min-content"
+      {...rest}
     >
       {cells.map((cell, i) => (
         <GridItem
