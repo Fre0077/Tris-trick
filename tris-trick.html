@@ -5,11 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>tris trick</title>
     <link rel="stylesheet" href="tris-trick.css">
+    <script>
+        function menu() {
+            window.location.href = 'menu.html';
+        }
+    </script>
 </head>
 <body>
     <div id="containerTurno">
-        <div id="scritteTurno">turno del:</div>
-        <div id="turno"></div>
+        <div id="bandaSinistra">
+            <div id="menu" onmousedown="menu()">Menù</div>
+        </div>
+        <div id="bandaDestra">
+            <div id="scritteTurno">turno del:</div>
+            <div id="turno"></div>
+        </div>
     </div>
     <div id="container">
         <div class="grande" id="grande1">

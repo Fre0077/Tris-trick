@@ -1,0 +1,68 @@
+<html>
+<head>
+    <title>Pinguino</title>
+</head>
+<body>
+    <div id="container">
+        <div id="menu" onmousedown="menu()">Menù</div>
+        <div id="titolo">Morire per quanto cavolo sono carini questi pinguini!!!</div>
+    </div>
+    <img id="pinguini" src="Giovani-pinguini-imperatore.jpg" alt="Noooo!!! i miei stupendi pinguini!!!">
+</body>
+<style>
+* {
+margin: 0;
+padding: 0;
+border: 0;
+}
+html body{
+    width: 100%;
+    height: 100%;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(97, 96, 96);
+}
+#container{
+    display: flex;
+    flex-direction: row;
+    
+}
+#menu{
+    font-size: 25px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 50px;
+    border-radius: 25px;
+    border: 2px solid black;
+    margin-right: 30px;
+    margin-bottom: 30px;
+}
+#titolo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: fantasy;
+    font-size: 35px;
+    margin-bottom: 30px;
+}
+#pinguini{
+    width: 60%;
+    border: 2px solid black;
+    border-radius: 40px;
+}
+
+#menu:hover {background-color: rgba(219, 218, 218, 0.274);}
+</style>
+<script>
+    function menu() {
+        window.location.href = 'menu.html';
+    }
+</script>
+</html>

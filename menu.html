@@ -1,0 +1,99 @@
+<html>
+<head>
+    <title>Menu principale</title>
+</head>
+<body>
+    <div id="colonna">
+        <div id="titolo">GIOCHI Fre007</div>
+        <div id="trisTrick" onmousedown="trisTrick()">tris-trick</div>
+    </div>
+    <div id="sotto">
+        <div id="illustrazioni">Questo sito creato dal me medesimo Francesco de santis, è rigorosamente sotto stretta osservazione e sfrutterà microfoni e videocamere del vostro dispositivo per spiarvi giorno e notte, senza contare che giocando ai giochi da me creati perderete buona parte della vostra sanità mentale quindi preparatevi brutti *parolaccia a vostra scelta*</div>
+        <div id="pinguino" onmousedown="pinguini()">se premete questo pulsante preparatevi <br>a morire</div>
+    </div>
+</body>
+<style>
+* {
+margin: 0;
+padding: 0;
+border: 0;
+}
+html body{
+    width: 100%;
+    height: 100%;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(97, 96, 96);
+}
+
+
+/*colonna centrale con tutti gli indirizzamenti ai giochi*/
+#colonna{
+    height: 800px;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+}
+#titolo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+    font-family:fantasy ;
+    margin-bottom: 50px;
+}
+#trisTrick{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid black;
+    border-radius: 30px;
+    width: 200px;
+    height: 60px;
+    font-size: 35px;
+    font-family:fantasy ;
+}
+
+#trisTrick:hover {background-color: rgba(219, 218, 218, 0.274);}
+
+
+/*parte di sotto con l'illustrazione di che cos'è questo sito e il tasto per i pinguini*/
+#sotto{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+#illustrazioni{
+    padding-left: 30px;
+    padding-right: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#pinguino{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-right: 30px;
+    width: 200px;
+    height: 50px;
+    border: 2px solid black;
+    border-radius: 25px;
+}
+
+#pinguino:hover {background-color: rgba(219, 218, 218, 0.274);}
+</style>
+<script>
+    function trisTrick() {
+        window.location.href = 'tris-trick.html';
+    }
+    function pinguini() {
+        window.location.href = 'pinguino.html';
+    }
+</script>
+</html>
