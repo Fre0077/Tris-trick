@@ -1,5 +1,5 @@
 //variabili da tenersi strette strette al culetto
-let turno = false;//per gestire i turni
+let turno = true;//per gestire i turni
 let turnoSuccessivo = '';//direi che è scontato
 let casella = "";//contiene id casella
 let casellaNum = 0;//contine il numero dell'id della casella
@@ -12,8 +12,13 @@ const caselleGrandiBlue = [];
 const sfondiCambiati = [];//array per memorizzare quali caselle sono state cambiate di sfondo
 
 
-document.getElementById('turno').style.backgroundColor = 'rgb(26, 58, 80)';
-document.getElementById('turno').style.borderRadius = '100%';
+if (turno == true) {
+    document.getElementById('turno').style.backgroundColor = 'rgb(119, 52, 52)';
+    document.getElementById('turno').style.borderRadius = '15px';
+} else if (turno == false) {
+    document.getElementById('turno').style.backgroundColor = 'rgb(26, 58, 80)';
+    document.getElementById('turno').style.borderRadius = '100%';
+}
 //funzione per piazzare i segni e gestire il gioco
 function place() {
 
@@ -221,15 +226,12 @@ function mossa(casellePiccole, caselleGrandi, colore) {
     //controllo per la vittoria o il pareggio
     if (controllaVittoriaGrande(caselleGrandi)==true) {
         if (colore == 'rosso') {
-            alert('complimenti giocatore rosso hai vinto la partita!!!\nE ricorda sempre che sei vai in bagno dopo il messicano ed il water è rosso non è mai un buon segno...')
-            location.reload()
+            window.location.href = 'vittoriaRosso.html';
         } else if (colore == 'blue') {
-            alert("complimenti giocatore blue hai vinto la partita!!!\nE ricorda sempre che se ti svegli e sei blue, si sarai come un puffo, però meglio che corri all'ospedale...")
-            location.reload()
+            window.location.href = 'vittoriaBlue.html';
         }
     } else if (caselleGrandiUsate.length==9) {
-        alert("La partita si è conclosa con un pareggio!!!\nE ricordate cari sfidanti che c'è chi prende fischi e c'è chi prende fiaschi, ma c'è anche lo sfigato che non prende niente...")
-        location.reload()
+        window.location.href = 'pareggio.html';
     }
     //cambio turno
     if (colore == 'rosso') {
@@ -243,8 +245,14 @@ function mossa(casellePiccole, caselleGrandi, colore) {
 //funzione per fare il primo turno di gioco
 function primaMossa(casellePiccole, colore) {
     document.getElementById(portaGrande(casellaNum)).style.backgroundColor = 'rgb(150, 150, 150)';
-    document.getElementById(casella).style.backgroundColor = 'rgb(26, 58, 80)';
-    document.getElementById(casella).style.borderRadius = '100%';
+    if (turno == true) {
+        document.getElementById(casella).style.backgroundColor = 'rgb(119, 52, 52)';
+        document.getElementById(casella).style.borderRadius = '15px';
+    } else if (turno == false) {
+        document.getElementById(casella).style.backgroundColor = 'rgb(26, 58, 80)';
+        document.getElementById(casella).style.borderRadius = '100%';
+    }
+    
     turnoSuccessivo = portaGrande(casellaNum);
     sfondiCambiati.push(portaGrande(casellaNum))
     caselleUsate.push(casellaNum);

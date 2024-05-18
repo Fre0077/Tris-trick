@@ -1,0 +1,67 @@
+<html>
+<head>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+html body{
+    width: 100%;
+    height: 100%;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(97, 96, 96);
+}
+
+#rosso{
+    font-family: fantasy;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+    border-radius: 40px;
+    background-color: rgb(119, 52, 52);
+}
+#testo{
+    margin-top: 50px;
+    text-align: center;
+    font-family: fantasy;
+    font-size: 30px;
+}
+#bottone{
+    font-family: fantasy;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    width: 200px;
+    height: 70px;
+    border: 3px solid black;
+    border-radius: 35px;
+}
+#bottone:hover {background-color: rgba(219, 218, 218, 0.274);}
+</style>
+<script>
+    function trisTrick() {
+        window.location.href = 'tris-trick.html';
+    }
+</script>
+</head>
+<body>
+    <div id="rosso">
+        VITTORIA!!!
+    </div>
+    <div id="testo">
+        complimenti giocatore rosso la tua vittoria sul giocatore blue è stata a dir poco schiacciante,<br> per questo va a goderti un sano tacos con peperoncino abbondante.<br>Io sarò pronto ad aspettarti al varco!!!
+    </div>
+    <div id="bottone" onmousedown="trisTrick()">RIGIOCA</div>
+</body>
+</html>
