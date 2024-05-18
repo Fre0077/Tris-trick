@@ -31,15 +31,15 @@ body {
     width: 45%;
 }
 #menu{
-    font-size: 25px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    font-family: fantasy;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 120px;
     height: 50px;
     border-radius: 25px;
-    border: 2px solid black;
+    border: 3px solid black;
     margin-left: 20px;
 }
 #bandaDestra{
@@ -50,7 +50,7 @@ body {
 }
 #scritteTurno{
     font-size: 30px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: fantasy;
     margin-right: 10px;
 }
 #turno{
