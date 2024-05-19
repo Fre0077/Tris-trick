@@ -6,11 +6,9 @@
     <div id="colonna">
         <div id="titolo">GIOCHI Fre007</div>
         <div id="trisTrick" onmousedown="trisTrick()">tris-trick</div>
-    </div>
-    <div id="sotto">
         <div id="illustrazioni">Questo sito creato dal me medesimo Francesco de santis, è rigorosamente sotto stretta osservazione e sfrutterà microfoni e videocamere del vostro dispositivo per spiarvi giorno e notte, senza contare che giocando ai giochi da me creati perderete buona parte della vostra sanità mentale quindi preparatevi brutti *parolaccia a vostra scelta*</div>
-        <div id="pinguino" onmousedown="pinguini()">se premete questo pulsante preparatevi <br>a morire</div>
-    </div>
+        <div id="pinguino" onmousedown="pinguini()">se premete questo pulsante preparatevi a morire</div>
+        <img src="bonfire-dark-souls.gif" alt="" id="fuoco">
 </body>
 <style>
 * {
@@ -24,24 +22,34 @@ html body{
 }
 body {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-color: rgb(97, 96, 96);
+    background-image: url(84b376dae4da28a2887f5ebad8671f9a.gif);
+    background-size: cover;
 }
 
 
+#fuoco{
+    margin-top: 20%;
+    height: 30%;
+}
 /*colonna centrale con tutti gli indirizzamenti ai giochi*/
 #colonna{
-    height: 800px;
+    width: 30%;
+    height: 100%;
     display: flex;
     flex-direction:column;
     align-items: center;
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+    background-color: rgb(97, 96, 96);
 }
 #titolo{
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     font-size: 60px;
     font-family:fantasy ;
     margin-bottom: 50px;
@@ -52,7 +60,7 @@ body {
     align-items: center;
     border: 3px solid black;
     border-radius: 30px;
-    width: 200px;
+    width: 55%;
     height: 60px;
     font-size: 35px;
     font-family:fantasy ;
@@ -62,28 +70,26 @@ body {
 
 
 /*parte di sotto con l'illustrazione di che cos'è questo sito e il tasto per i pinguini*/
-#sotto{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-}
 #illustrazioni{
-    padding-left: 30px;
-    padding-right: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-family: fantasy;
+    font-size: 22px;
 }
 #pinguino{
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin-right: 30px;
-    width: 200px;
-    height: 50px;
+    width: fit-content;
+    height:fit-content;
     border: 2px solid black;
+    font-family: fantasy;
+    font-size: 12px;
     border-radius: 25px;
+    padding: 4px;
 }
 
 #pinguino:hover {background-color: rgba(219, 218, 218, 0.274);}
