@@ -124,7 +124,7 @@ function controllaPareggio() {
     let temp = 0
     let i = riconosciGrande(casella).replace('grande','')
     for (n=1;n<10;n++) {
-        if(in_array('i'+(n*i),caselleUsate) == true)  {
+        if(in_array('i'+(i+n),caselleUsate) == true)  {
             temp++
         }
     }
@@ -201,7 +201,6 @@ function mossa(casellePiccole, caselleGrandi, colore) {
     //caselle già usate
     caselleUsate.push(casellaNum);
     casellePiccole.push(casellaNum);
-    controllaPareggio()
     //caselle grandi già usate 
     if (controllaVittoriaPiccolo(casellaNum, casellePiccole)!==0) {
         caselleGrandi.push(controllaVittoriaPiccolo(casellaNum, casellePiccole));
