@@ -122,7 +122,6 @@ function inizio() {
 //funzione per verificare se in una casella picola c'è stato un pareggio
 function controllaPareggio() {
     let temp = 0
-<<<<<<< HEAD
     let i = riconosciGrande(casellaNum).replace('grande','')-1
     for (n=1;n<10;n++) {
         if(in_array(((i*9)+n),caselleUsate) == true)  {
@@ -133,16 +132,6 @@ function controllaPareggio() {
     }
     if (temp == 9) {
         caselleGrandiUsate.push(i+1)
-=======
-    let i = riconosciGrande(casella).replace('grande','')
-    for (n=1;n<10;n++) {
-        if(in_array('i'+(i+n),caselleUsate) == true)  {
-            temp++
-        }
-    }
-    if (temp == 9) {
-        riconosciGrande(casella).push(caselleGrandiUsate)
->>>>>>> 2ba0b98ec6b48b62fd3310aef72fdd7a507e6f3a
     }
 }
 
