@@ -119,6 +119,24 @@ function inizio() {
 }
 
 
+//funzione per verificare se in una casella picola c'è stato un pareggio
+function controllaPareggio() {
+    let temp = 0
+    let i = riconosciGrande(casellaNum).replace('grande','')-1
+    for (n=1;n<10;n++) {
+        if(in_array(((i*9)+n),caselleUsate) == true)  {
+            temp++
+        } else {
+            return 0
+        }
+    }
+    if (temp == 9) {
+        caselleGrandiUsate.push(i+1)
+    }
+}
+
+
+
 //funzione per controllare se un giocatore ha vinto in uno dei 9 quadranti
 function controllaVittoriaPiccolo(valoreIngresso, arrayIngresso) {
     let grandeNum = parseInt((riconosciGrande(valoreIngresso)).replace("grande",""));
@@ -185,6 +203,7 @@ function mossa(casellePiccole, caselleGrandi, colore) {
     //caselle già usate
     caselleUsate.push(casellaNum);
     casellePiccole.push(casellaNum);
+    controllaPareggio()
     //caselle grandi già usate 
     if (controllaVittoriaPiccolo(casellaNum, casellePiccole)!==0) {
         caselleGrandi.push(controllaVittoriaPiccolo(casellaNum, casellePiccole));
