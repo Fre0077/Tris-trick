@@ -1,0 +1,105 @@
+<html>
+<head>
+    <title>Menu principale</title>
+</head>
+<body>
+    <div id="colonna">
+        <div id="titolo">GIOCHI Fre007</div>
+        <div id="trisTrick" onmousedown="trisTrick()">tris-trick</div>
+        <img src="bonfire-dark-souls.gif" alt="" id="fuoco">
+        <div id="illustrazioni">Questo sito creato dal me medesimo Francesco De Santis, è rigorosamente sotto stretta osservazione e sfrutterà microfoni e videocamere del vostro dispositivo per spiarvi giorno e notte, senza contare che giocando ai giochi da me creati perderete buona parte della vostra sanità mentale quindi preparatevi brutti *parolaccia a vostra scelta*. Ah, inoltre me ne frego del copyright quindi faccio tutto quello che mi pare</div>
+        <div id="pinguino" onmousedown="pinguini()">se premete questo pulsante preparatevi a morire</div>
+</body>
+<style>
+* {
+margin: 0;
+padding: 0;
+border: 0;
+}
+html body{
+    width: 100%;
+}
+body {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-image: url(citta.jpg);
+    background-size: cover;
+    background-attachment:fixed ;
+}
+
+
+#fuoco{
+    margin-top: 20%;
+    height: 200px;
+}
+/*colonna centrale con tutti gli indirizzamenti ai giochi*/
+#colonna{
+    width: 30%;
+    min-height:100%;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+    background-color: rgb(97, 96, 96);
+}
+#titolo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 60px;
+    font-family:fantasy ;
+    margin-bottom: 50px;
+}
+#trisTrick{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid black;
+    border-radius: 30px;
+    width: 55%;
+    height: 60px;
+    font-size: 35px;
+    font-family:fantasy ;
+}
+
+#trisTrick:hover {background-color: rgba(219, 218, 218, 0.274);}
+
+
+/*parte di sotto con l'illustrazione di che cos'è questo sito e il tasto per i pinguini*/
+#illustrazioni{
+    margin-top: 50px;
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-family: fantasy;
+    font-size: 22px;
+}
+#pinguino{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: fit-content;
+    height:fit-content;
+    border: 2px solid black;
+    font-family: fantasy;
+    font-size: 12px;
+    border-radius: 25px;
+    padding: 4px;
+}
+
+#pinguino:hover {background-color: rgba(219, 218, 218, 0.274);}
+</style>
+<script>
+    function trisTrick() {
+        window.location.href = 'tris-trick.html';
+    }
+    function pinguini() {
+        window.location.href = 'pinguino.html';
+    }
+</script>
+</html>

@@ -188,7 +188,7 @@ function controllaVittoriaGrande(arrayIngresso) {
 
 // funzione che rimanda alla pagina menù
 function menu() {
-    window.location.href = 'menu.html';
+    window.location.href = 'index.html';
 }
 
 
